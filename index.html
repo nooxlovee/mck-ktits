@@ -71,7 +71,7 @@
                         Нормативные документы
                         <img src="assets/media/images/icons/иконка перехода.svg" alt="" width="40" height="40">
                     </a>
-                    <a class="quick-link-card" href="#contacts">
+                    <a class="quick-link-card" href="contacts.html">
                         Контакты приемной комиссии
                         <img src="assets/media/images/icons/иконка перехода.svg" alt="" width="40" height="40">
                     </a>
@@ -84,41 +84,43 @@
             <div class="admission-steps__panel">
                 <div class="admission-steps__head">
                     <h2 class="admission-steps__title">Порядок действий для поступления</h2>
-                    <p class="admission-steps__lead">
-                        Пять остановок на пути от первой мысли «хочу поступить» до подписи в зачётной ведомости.
-                    </p>
                 </div>
 
-                <ol class="admission-steps__timeline">
-                    <li class="admission-step">
-                        <div class="admission-step__node">
-                            <span class="admission-step__index">01</span>
-                            <span class="admission-step__dot" aria-hidden="true"></span>
-                        </div>
-                        <article class="admission-step__card">
-                            <h3>Приёмная комиссия принимает документы</h3>
-                            <ul class="admission-step__dates">
-                                <li>
-                                    <span class="admission-step__tag">Бюджет</span>
-                                    <span>16 июня — 15 августа включительно</span>
-                                </li>
-                                <li>
-                                    <span class="admission-step__tag">Внебюджет</span>
-                                    <span>16 июня — 22 августа включительно</span>
-                                </li>
-                            </ul>
-                        </article>
-                    </li>
+                <aside class="admission-notice">
+                    <div class="admission-notice__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3.5" y="5" width="17" height="15" rx="2.5"></rect>
+                            <path d="M3.5 9.5h17"></path>
+                            <path d="M8 3v4"></path>
+                            <path d="M16 3v4"></path>
+                        </svg>
+                    </div>
+                    <div class="admission-notice__body">
+                        <h3 class="admission-notice__title">Приёмная комиссия принимает документы</h3>
+                        <ul class="admission-notice__dates">
+                            <li>
+                                <span class="admission-notice__tag">Бюджет</span>
+                                <span>16 июня — 15 августа включительно</span>
+                            </li>
+                            <li>
+                                <span class="admission-notice__tag">Внебюджет</span>
+                                <span>16 июня — 22 августа включительно</span>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
 
-                    <li class="admission-step">
-                        <div class="admission-step__node">
-                            <span class="admission-step__index">02</span>
-                            <span class="admission-step__dot" aria-hidden="true"></span>
+                <ol class="admission-flow">
+                    <li class="admission-flow__item" style="--i:1">
+                        <div class="admission-flow__marker" aria-hidden="true">
+                            <span class="admission-flow__num">1</span>
+                            <span class="admission-flow__ring"></span>
                         </div>
-                        <article class="admission-step__card">
-                            <span class="admission-step__eyebrow">Папка поступающего</span>
+                        <article class="admission-flow__card">
+                            <span class="admission-flow__eyebrow">Папка поступающего</span>
                             <h3>Подготовьте документы</h3>
-                            <ul class="admission-step__checklist">
+                            <ul class="admission-flow__checklist">
                                 <li>Паспорт <em>оригинал + копия</em></li>
                                 <li>Документ об образовании <em>оригинал + копия</em></li>
                                 <li>ИНН <em>копия</em></li>
@@ -131,57 +133,57 @@
                         </article>
                     </li>
 
-                    <li class="admission-step">
-                        <div class="admission-step__node">
-                            <span class="admission-step__index">03</span>
-                            <span class="admission-step__dot" aria-hidden="true"></span>
+                    <li class="admission-flow__item" style="--i:2">
+                        <div class="admission-flow__marker" aria-hidden="true">
+                            <span class="admission-flow__num">2</span>
+                            <span class="admission-flow__ring"></span>
                         </div>
-                        <article class="admission-step__card">
-                            <span class="admission-step__eyebrow">Онлайн-анкета</span>
+                        <article class="admission-flow__card">
+                            <span class="admission-flow__eyebrow">Онлайн-анкета</span>
                             <h3>Заполните электронное заявление в личном кабинете</h3>
                             <p>
                                 Чем подробнее анкета — тем короче визит в техникум. Всё заполненное заранее
                                 экономит время при регистрации заявления.
                             </p>
-                            <div class="admission-step__actions">
-                                <a href="#" class="admission-step__btn">Личный кабинет →</a>
-                                <a href="#" class="admission-step__btn admission-step__btn--ghost">Посетить техникум</a>
+                            <div class="admission-flow__actions">
+                                <a href="#" class="admission-flow__btn">Личный кабинет →</a>
+                                <a href="#" class="admission-flow__btn admission-flow__btn--ghost">Посетить техникум</a>
                             </div>
                         </article>
                     </li>
 
-                    <li class="admission-step">
-                        <div class="admission-step__node">
-                            <span class="admission-step__index">04</span>
-                            <span class="admission-step__dot" aria-hidden="true"></span>
+                    <li class="admission-flow__item" style="--i:3">
+                        <div class="admission-flow__marker" aria-hidden="true">
+                            <span class="admission-flow__num">3</span>
+                            <span class="admission-flow__ring"></span>
                         </div>
-                        <article class="admission-step__card">
-                            <span class="admission-step__eyebrow">Запись на приём</span>
+                        <article class="admission-flow__card">
+                            <span class="admission-flow__eyebrow">Запись на приём</span>
                             <h3>Выберите удобное время визита</h3>
                             <p>
                                 Запись — на одно заявление; сопровождающих учитывать не нужно. При желании
                                 можно прийти в порядке живой очереди.
                             </p>
-                            <aside class="admission-step__note">
+                            <aside class="admission-flow__note">
                                 Заполните личный кабинет дома, в спокойной обстановке — это повысит точность
                                 данных и ускорит визит.
                             </aside>
                         </article>
                     </li>
 
-                    <li class="admission-step admission-step--finish">
-                        <div class="admission-step__node">
-                            <span class="admission-step__index">05</span>
-                            <span class="admission-step__dot admission-step__dot--finish" aria-hidden="true"></span>
+                    <li class="admission-flow__item admission-flow__item--finish" style="--i:4">
+                        <div class="admission-flow__marker admission-flow__marker--finish" aria-hidden="true">
+                            <span class="admission-flow__num">4</span>
+                            <span class="admission-flow__ring"></span>
                         </div>
-                        <article class="admission-step__card">
-                            <span class="admission-step__eyebrow">Финиш</span>
+                        <article class="admission-flow__card">
+                            <span class="admission-flow__eyebrow">Финиш</span>
                             <h3>Приходите в техникум в выбранное время</h3>
                             <p>
                                 Опоздали или сложно планировать? Воспользуйтесь электронной очередью
                                 прямо на месте — или подайте заявление онлайн.
                             </p>
-                            <a href="#" class="admission-step__btn admission-step__btn--inline">
+                            <a href="#" class="admission-flow__btn admission-flow__btn--inline">
                                 Подать через Госуслуги →
                             </a>
                         </article>
