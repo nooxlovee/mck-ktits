@@ -57,3 +57,31 @@ if ('IntersectionObserver' in window) {
     revealTargets.forEach((el) => el.classList.add('is-visible'));
     flowItems.forEach((el) => el.classList.add('is-visible'));
 }
+
+/* Кликабельные строки таблицы */
+document.querySelectorAll('.nums-row--link').forEach((row) => {
+    const go = () => {
+        const href = row.getAttribute('data-href');
+        if (href) window.location.href = href;
+    };
+    row.addEventListener('click', go);
+    row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            go();
+        }
+    });
+});
+
+/* Scroll-to-top */
+const scrollTopBtn = document.querySelector('.scroll-top');
+if (scrollTopBtn) {
+    const toggle = () => {
+        scrollTopBtn.classList.toggle('is-visible', window.scrollY > 400);
+    };
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}

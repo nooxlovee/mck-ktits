@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="shortcut icon" href="assets/media/images/logo/1.svg" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
   <div class="page">
     <header class="site-header">
@@ -20,6 +22,7 @@
           <a href="documents.html" class="site-nav__link">Документы</a>
           <a href="faq.html" class="site-nav__link">FAQ</a>
           <a href="contacts.html" class="site-nav__link">Контакты</a>
+          <a href="https://mck-ktits.ru/" class="site-nav__link">Вернуться на сайт МЦК-КТИТС</a>
         </nav>
         <button class="site-burger" type="button" aria-label="Меню" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -33,19 +36,35 @@
           <div class="specialties-hero__panel">
             <div class="specialties-hero__text">
               <h1 class="specialties-hero__title">Цифры приема</h1>
-              <p class="nums-hero__subtitle">План приема по специальностям на 2026/2027 учебный год</p>
               <p class="specialties-hero__lead">
                 Объемы контрольных цифр приема граждан для обучения
                 по образовательным программам среднего профессионального образования
                 на 1 курс 2026/2027 учебного года (очная форма обучения).
               </p>
             </div>
+            <div class="specialties-hero__badge" aria-hidden="true">
+              <img src="assets/media/images/icons/цифры_приема.svg" alt="" width="180" height="180">
+            </div>
           </div>
-        </div>
       </section>
 
       <section class="nums-section" aria-label="Контрольные цифры приема">
         <div class="container">
+          
+          <ul class="nums-summary" role="list">
+            <li class="nums-summary__item">
+              <span class="nums-summary__label">Всего мест</span>
+              <span class="nums-summary__value">455</span>
+            </li>
+            <li class="nums-summary__item">
+              <span class="nums-summary__label">Бюджет</span>
+              <span class="nums-summary__value">250</span>
+            </li>
+            <li class="nums-summary__item">
+              <span class="nums-summary__label">Коммерция</span>
+              <span class="nums-summary__value">205</span>
+            </li>
+          </ul>
           <div class="nums-table-wrap">
             <table class="nums-table">
               <thead>
@@ -61,7 +80,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="nums-row--link" data-href="specialty.html" tabindex="0" role="link">
                   <td data-label="№">1</td>
                   <td data-label="Код"><span class="nums-code">09.02.01</span></td>
                   <td data-label="Специальность">Компьютерные системы и комплексы</td>
@@ -134,7 +153,8 @@
                 <tr>
                   <td data-label="№">6</td>
                   <td data-label="Код"><span class="nums-code">09.02.13</span></td>
-                  <td data-label="Специальность">Интеграция решений с применением технологий искусственного интеллекта</td>
+                  <td data-label="Специальность">Интеграция решений с применением технологий искусственного интеллекта
+                  </td>
                   <td data-label="Квалификация">Специалист по работе с искусственным интеллектом</td>
                   <td data-label="Срок обучения">3 года 10 месяцев</td>
                   <td data-label="Всего" class="nums-td--num nums-td--total">30</td>
@@ -183,20 +203,6 @@
             </table>
           </div>
 
-          <ul class="nums-summary" role="list">
-            <li class="nums-summary__item">
-              <span class="nums-summary__label">Всего мест</span>
-              <span class="nums-summary__value">455</span>
-            </li>
-            <li class="nums-summary__item">
-              <span class="nums-summary__label">Бюджет</span>
-              <span class="nums-summary__value">250</span>
-            </li>
-            <li class="nums-summary__item">
-              <span class="nums-summary__label">Коммерция</span>
-              <span class="nums-summary__value">205</span>
-            </li>
-          </ul>
         </div>
       </section>
     </main>
@@ -258,4 +264,5 @@
   </div>
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

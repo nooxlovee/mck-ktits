@@ -10,10 +10,60 @@
   list-style: none;
 }
 
+.scroll-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(3, 68, 194, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s ease;
+  z-index: 999;
+}
+
+.scroll-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background: #022f8a;
+}
+
+.scroll-top svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 600px) {
+  .scroll-top {
+    right: 16px;
+    bottom: 16px;
+    width: 46px;
+    height: 46px;
+  }
+}
+
+html {
+  overflow-x: clip;
+}
+
 body {
   color: #1A1A1A;
   background: #fff;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 :root {
@@ -268,10 +318,20 @@ body {
   transform: translateY(-2px);
 }
 
-.quick-link-card img {
+.quick-link-card__icon {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
+  background: white;
+}
+
+.quick-link-card__icon img {
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
@@ -598,19 +658,6 @@ body {
   overflow: hidden;
 }
 
-.admission-flow__card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--accent-color), #3a6ef5);
-  transform: scaleY(0);
-  transform-origin: top center;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 .admission-flow__card::after {
   content: "";
   position: absolute;
@@ -629,10 +676,6 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 22px 40px rgba(15, 23, 42, 0.1);
   border-color: rgba(3, 68, 194, 0.2);
-}
-
-.admission-flow__item:hover .admission-flow__card::before {
-  transform: scaleY(1);
 }
 
 .admission-flow__item:hover .admission-flow__card::after {
@@ -964,9 +1007,14 @@ body {
     font-size: 16px;
   }
 
-  .quick-link-card img {
+  .quick-link-card__icon {
     width: 32px;
     height: 32px;
+  }
+
+  .quick-link-card__icon img {
+    width: 16px;
+    height: 16px;
   }
 
   .admission-steps {
@@ -1099,19 +1147,6 @@ body {
   overflow: hidden;
 }
 
-.contact-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-color), #3a6ef5);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 .contact-card::after {
   content: "";
   position: absolute;
@@ -1130,10 +1165,6 @@ body {
   transform: translateY(-6px);
   box-shadow: 0 24px 46px rgba(15, 23, 42, 0.1);
   border-color: rgba(3, 68, 194, 0.22);
-}
-
-.contact-card:hover::before {
-  transform: scaleX(1);
 }
 
 .contact-card:hover::after {
@@ -2050,19 +2081,6 @@ body {
     border-color 0.3s ease;
 }
 
-/* левая акцентная полоса */
-.spec-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 5px;
-  background: var(--accent-color);
-  border-radius: 0 4px 4px 0;
-  z-index: 1;
-}
-
 /* декоративный круг справа сверху */
 .spec-card::after {
   content: "";
@@ -2470,10 +2488,6 @@ body {
     border-radius: 20px;
   }
 
-  .spec-card::before {
-    width: 4px;
-  }
-
   .spec-card__top {
     gap: 12px;
     margin-bottom: 18px;
@@ -2827,10 +2841,18 @@ body {
   animation: sp-rise .7s ease-out both;
 }
 
+.sp-hero__top {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 10px 0 40px;
+}
+
 .sp-hero__head {
   position: relative;
   max-width: 760px;
-  padding: 10px 0 40px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .sp-hero__title {
@@ -2859,13 +2881,10 @@ body {
 }
 
 .sp-hero__illustration {
-  position: absolute;
-  top: -10px;
-  right: 0;
+  flex: 0 0 auto;
   width: clamp(220px, 28vw, 360px);
   pointer-events: none;
   animation: sp-float 7s ease-in-out infinite;
-  z-index: 0;
 }
 
 .sp-hero__illustration img {
@@ -2897,27 +2916,10 @@ body {
   transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
 }
 
-.sp-metric::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--accent-color);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform .4s ease;
-}
-
 .sp-metric:hover {
   transform: translateY(-4px);
   border-color: rgba(3, 68, 194, 0.25);
   box-shadow: 0 18px 40px rgba(3, 68, 194, 0.1);
-}
-
-.sp-metric:hover::after {
-  transform: scaleY(1);
 }
 
 .sp-metric--wide {
@@ -3384,11 +3386,15 @@ body {
 
 /* ── RESPONSIVE ─────────────────────── */
 @media (max-width: 1100px) {
+  .sp-hero__top {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 20px;
+  }
+
   .sp-hero__illustration {
-    position: static;
     width: 220px;
-    margin: 0 0 20px auto;
-    display: block;
+    margin: 0 auto;
   }
 
   .sp-section__inner {
@@ -3521,7 +3527,7 @@ body {
 }
 .faq-summary::-webkit-details-marker { display: none; }
 .faq-num {
-  font-size: 30px;
+  font-size: 38px;
   font-weight: 900;
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(3, 68, 194, 0.4);
@@ -3616,19 +3622,26 @@ body {
   background: #ffffff;
   border: 1px solid rgba(3, 68, 194, 0.12);
   box-shadow: 0 10px 30px rgba(3, 68, 194, 0.06);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 .nums-table {
   width: 100%;
   min-width: 1040px;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 14.5px;
   color: #0B1A3A;
 }
-.nums-table thead th {
+.nums-table thead {
   position: sticky;
-  top: 0;
+  top: 76px;
+  z-index: 5;
+}
+
+.nums-table thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 76px;
+  z-index: 5;
   background: var(--accent-color);
   color: #ffffff;
   font-weight: 700;
@@ -3639,6 +3652,7 @@ body {
   padding: 16px 18px;
   white-space: nowrap;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: none;
 }
 .nums-table thead th.nums-th--num { text-align: right; }
 .nums-table thead th.nums-th--n { width: 56px; }
@@ -3650,6 +3664,14 @@ body {
 }
 .nums-table tbody tr:hover {
   background: rgba(3, 68, 194, 0.07);
+}
+
+.nums-table tbody tr.nums-row--link {
+  cursor: pointer;
+}
+
+.nums-table tbody tr.nums-row--link:hover {
+  background: rgba(3, 68, 194, 0.12);
 }
 .nums-table td {
   padding: 16px 18px;
@@ -3702,12 +3724,12 @@ body {
 
 .nums-summary {
   max-width: 1200px;
-  margin: 28px auto 0;
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  margin-bottom: 30px;
 }
 .nums-summary__item {
   display: flex;
@@ -3754,7 +3776,7 @@ body {
   .nums-summary { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1040px) {
   .nums-section { padding: 32px 0 64px; }
   .nums-table-wrap {
     border-radius: 18px;
@@ -3795,19 +3817,31 @@ body {
     flex-shrink: 0;
   }
   .nums-td--num { text-align: right; }
-  .nums-total {
+  .nums-table tfoot tr.nums-total {
     background: linear-gradient(135deg, var(--accent-color), #3a6ef5) !important;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 22px;
+    margin-bottom: 0;
   }
-  .nums-total td {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  .nums-table tfoot tr.nums-total td {
+    display: block;
+    padding: 0;
+    border-bottom: none;
+    text-align: center;
   }
-  .nums-total td:last-child { border-bottom: none; }
-  .nums-total td::before {
-    color: rgba(255, 255, 255, 0.75);
+  .nums-table tfoot tr.nums-total td::before { display: none; }
+  .nums-table tfoot tr.nums-total .nums-total__label {
+    display: block;
+    flex: 1 1 auto;
+    text-align: left;
   }
-  .nums-total__label { display: none; }
+  .nums-table tfoot tr.nums-total .nums-total__value {
+    flex: 0 0 auto;
+  }
 }
 
 /* ── НОРМАТИВНЫЕ ДОКУМЕНТЫ ──────────── */
