@@ -1,0 +1,230 @@
+@extends('layouts.app')
+
+@section('content')
+    <main class="sp-main">
+        <!-- HERO -->
+        <section class="sp-hero">
+            <div class="container">
+                <a href="specialities.html" class="sp-hero__back">
+                    <span>← Все специальности</span>
+                </a>
+
+                <div class="sp-hero__card">
+                    <div class="sp-hero__top">
+                        <div class="sp-hero__head">
+                            <h1 class="sp-hero__title">Разработчик веб-приложений на стороне клиента</h1>
+                            <p class="sp-hero__code">09.02.09</p>
+                            <p class="sp-hero__dept">Цикловая комиссия «Веб технологии»</p>
+                        </div>
+                        <div class="sp-hero__illustration" aria-hidden="true">
+                            <img src="../../../assets/media/images/speciality/1.svg" alt="">
+                        </div>
+                    </div>
+
+                    <ul class="sp-metrics" role="list">
+                        <li class="sp-metric sp-metric--wide">
+                            <span class="sp-metric__value">25/30</span>
+                            <span class="sp-metric__label">бюджетных мест / коммерческих мест</span>
+                        </li>
+                        <li class="sp-metric">
+                            <span class="sp-metric__value">88 880 ₽</span>
+                            <span class="sp-metric__label">стоимость за год обучения</span>
+                        </li>
+                        <li class="sp-metric">
+                            <span class="sp-metric__value">2 г. 10 мес.</span>
+                            <span class="sp-metric__label">длительность обучения</span>
+                        </li>
+                        <li class="sp-metric">
+                            <span class="sp-metric__value">СПО</span>
+                            <span class="sp-metric__label">уровень образования</span>
+                        </li>
+                        <li class="sp-metric">
+                            <span class="sp-metric__value">Очная</span>
+                            <span class="sp-metric__label">форма обучения</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- О ПРОГРАММЕ -->
+        <section class="sp-section sp-about" aria-labelledby="sp-about-title">
+            <div class="container sp-section__inner">
+                <div class="sp-section__head">
+                    <h2 id="sp-about-title" class="sp-section__title">О программе</h2>
+                </div>
+                <div class="sp-about__body">
+                    <p class="sp-about__lead">
+                        Готовим квалифицированных специалистов в области разработки,
+                        внедрения и сопровождения информационных систем
+                        и программного обеспечения.
+                    </p>
+                    <p class="sp-about__text">
+                        Программа сочетает в себе теоретические знания и практические
+                        навыки в области математики, информатики и прикладного
+                        программирования. Студенты работают над реальными проектами
+                        и выпускаются с готовым портфолио.
+                    </p>
+
+                    <ul class="sp-about__tags" role="list">
+                        <li>HTML &amp; CSS</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <li>Современные фреймворки</li>
+                        <li>UI / UX</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ТЫ НАУЧИШЬСЯ -->
+        <section class="sp-section sp-learn" aria-labelledby="sp-learn-title">
+            <div class="container sp-section__inner">
+                <div class="sp-section__head">
+                    <h2 id="sp-learn-title" class="sp-section__title">Ты научишься</h2>
+                </div>
+
+                <div class="sp-learn__grid">
+                    <article class="sp-learn__card" style="--i:0">
+                        <span class="sp-learn__num">01</span>
+                        <p>Проектировать архитектуру веб-сайтов и мультимедийных приложений, объединяя текстовые, графические и
+                            мультимедийные средства для корпоративных ресурсов и интернет-магазинов.</p>
+                    </article>
+                    <article class="sp-learn__card" style="--i:1">
+                        <span class="sp-learn__num">02</span>
+                        <p>Разрабатывать код на языках программирования (HTML, CSS, JavaScript, PHP) с использованием современных
+                            фреймворков и систем управления контентом (CMS).</p>
+                    </article>
+                    <article class="sp-learn__card" style="--i:2">
+                        <span class="sp-learn__num">03</span>
+                        <p>Выполнять адаптивную вёрстку и реализовывать кросс-браузерные интерфейсы для корректного отображения на
+                            мобильных, планшетных и компьютерных устройствах.</p>
+                    </article>
+                    <article class="sp-learn__card" style="--i:3">
+                        <span class="sp-learn__num">04</span>
+                        <p>Применять инструменты 3D-моделирования и современные технологии проектирования для создания
+                            высококачественных макетов сайтов.</p>
+                    </article>
+                    <article class="sp-learn__card" style="--i:4">
+                        <span class="sp-learn__num">05</span>
+                        <p>Разрабатывать пользовательские интерфейсы (FrontEnd) и серверную логику (BackEnd) для создания
+                            полноценных веб-приложений и корпоративных сайтов.</p>
+                    </article>
+                    <article class="sp-learn__card" style="--i:5">
+                        <span class="sp-learn__num">06</span>
+                        <p>Сочетать дизайнерские и технические навыки в процессе проектирования, разработки и сопровождения
+                            веб-сайтов и мультимедийных приложений.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- КЕМ БУДЕШЬ РАБОТАТЬ -->
+        <section class="sp-section sp-career" aria-labelledby="sp-career-title">
+            <div class="container sp-section__inner">
+                <div class="sp-section__head">
+                    <h2 id="sp-career-title" class="sp-section__title">Кем будешь работать</h2>
+                </div>
+
+                <ul class="sp-career__list" role="list">
+                    <li class="sp-career__chip">web-программист</li>
+                    <li class="sp-career__chip">HTML-верстальщик</li>
+                    <li class="sp-career__chip">разработчик мультимедийных приложений</li>
+                    <li class="sp-career__chip">консультант по информационным системам</li>
+                    <li class="sp-career__chip">тестировщик</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ПРОФИЛЬНЫЕ ПРЕДМЕТЫ -->
+        <section class="sp-section sp-subjects" aria-labelledby="sp-subjects-title">
+            <div class="container sp-section__inner">
+                <div class="sp-section__head">
+                    <h2 id="sp-subjects-title" class="sp-section__title">Профильные предметы</h2>
+                </div>
+
+                <ul class="sp-subjects__grid" role="list">
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">01</span><span>Проектирование и дизайн
+                информационных систем</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">02</span><span>Разработка кода информационных
+                систем</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">03</span><span>Тестирование информационных
+                систем</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">04</span><span>Проектирование и разработка
+                интерфейсов пользователя</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">05</span><span>Графический дизайн и
+                мультимедиа</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">06</span><span>Проектирование и разработка
+                веб-приложений</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">07</span><span>Оптимизация
+                веб-приложений</span></li>
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">08</span><span>Обеспечение безопасности
+                веб-приложений</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ПРЕПОДАВАТЕЛИ -->
+        <section class="sp-section sp-staff" aria-labelledby="sp-staff-title">
+            <div class="container sp-section__inner">
+
+                <div class="sp-staff__grid">
+                    <article class="sp-person">
+                        <div class="sp-person__photo-wrap">
+                            <img src="../../../assets/media/images/teachers/dinar.jpeg" alt="" class="sp-person__photo">
+                            <span class="sp-person__badge">ЦК</span>
+                        </div>
+                        <div class="sp-person__body">
+                            <p class="sp-person__role">Председатель цикловой комиссии «Веб технологии»</p>
+                            <h3 class="sp-person__name">Хайруллин Динар Ильсурович</h3>
+                        </div>
+                    </article>
+
+                    <article class="sp-person">
+                        <div class="sp-person__photo-wrap">
+                            <img src="../../../assets/media/images/teachers/dinar.jpeg" alt="" class="sp-person__photo">
+                            <span class="sp-person__badge">каб. 422</span>
+                        </div>
+                        <div class="sp-person__body">
+                            <p class="sp-person__role">Заведующая отделением «Базовая профессиональная подготовка»</p>
+                            <h3 class="sp-person__name">Зарипова Лилия Шамилевна</h3>
+
+                            <div class="sp-person__links">
+                                <a class="sp-person__link" href="tel:+78432035555">
+                                    <img src="../../../assets/media/images/icons/phone.svg" alt="" width="18" height="18">
+                                    <span>8 (843) 203-55-55 <em>доб. 241</em></span>
+                                </a>
+                                <a class="sp-person__link" href="mailto:Liliya.Shamilevna@tatar.ru">
+                                    <img src="../../../assets/media/images/icons/email.svg" alt="" width="18" height="18">
+                                    <span>Liliya.Shamilevna@tatar.ru</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="sp-person">
+                        <div class="sp-person__photo-wrap">
+                            <img src="../../../assets/media/images/teachers/dinar.jpeg" alt="" class="sp-person__photo">
+                            <span class="sp-person__badge">каб. 1311</span>
+                        </div>
+                        <div class="sp-person__body">
+                            <p class="sp-person__role">Заведующая отделением «Информационные технологии»</p>
+                            <h3 class="sp-person__name">Зубкова Алина Сергеевна</h3>
+
+                            <div class="sp-person__links">
+                                <a class="sp-person__link" href="tel:+78432035555">
+                                    <img src="../../../assets/media/images/icons/phone.svg" alt="" width="18" height="18">
+                                    <span>8 (843) 203-55-55 <em>доб. 332</em></span>
+                                </a>
+                                <a class="sp-person__link" href="mailto:Alina.ZubkovaSer@tatar.ru">
+                                    <img src="../../../assets/media/images/icons/email.svg" alt="" width="18" height="18">
+                                    <span>Alina.ZubkovaSer@tatar.ru</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection
