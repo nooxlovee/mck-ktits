@@ -5,33 +5,36 @@
         <!-- HERO -->
         <section class="sp-hero">
             <div class="container">
-                <a href="specialities.html" class="sp-hero__back">
+                <a href="{{route('view.specialities')}}" class="sp-hero__back">
                     <span>← Все специальности</span>
                 </a>
 
                 <div class="sp-hero__card">
                     <div class="sp-hero__top">
                         <div class="sp-hero__head">
-                            <h1 class="sp-hero__title">Разработчик веб-приложений на стороне клиента</h1>
-                            <p class="sp-hero__code">09.02.09</p>
-                            <p class="sp-hero__dept">Цикловая комиссия «Веб технологии»</p>
+                            <h1 class="sp-hero__title">{{$speciality->title}}</h1>
+                            @if($speciality->qualification)
+                                <p class="sp-hero__qualification">{{$speciality->qualification}}</p>
+                            @endif
+                            <p class="sp-hero__code">{{$speciality->code}}</p>
+                            <p class="sp-hero__dept">Цикловая комиссия «{{$speciality->cycleCommission->title}}»</p>
                         </div>
                         <div class="sp-hero__illustration" aria-hidden="true">
-                            <img src="../../../assets/media/images/speciality/1.svg" alt="">
+                            <img src="{{asset('storage/' . $speciality->image)}}" alt="">
                         </div>
                     </div>
 
                     <ul class="sp-metrics" role="list">
                         <li class="sp-metric sp-metric--wide">
-                            <span class="sp-metric__value">25/30</span>
+                            <span class="sp-metric__value">{{$speciality->budget_places}}/{{$speciality->commercial_places}}</span>
                             <span class="sp-metric__label">бюджетных мест / коммерческих мест</span>
                         </li>
                         <li class="sp-metric">
-                            <span class="sp-metric__value">88 880 ₽</span>
+                            <span class="sp-metric__value">{{ number_format($speciality->price_per_year, 0, '.', ' ') }} ₽</span>
                             <span class="sp-metric__label">стоимость за год обучения</span>
                         </li>
                         <li class="sp-metric">
-                            <span class="sp-metric__value">2 г. 10 мес.</span>
+                            <span class="sp-metric__value">{{$speciality->duration}}</span>
                             <span class="sp-metric__label">длительность обучения</span>
                         </li>
                         <li class="sp-metric">
@@ -39,7 +42,7 @@
                             <span class="sp-metric__label">уровень образования</span>
                         </li>
                         <li class="sp-metric">
-                            <span class="sp-metric__value">Очная</span>
+                            <span class="sp-metric__value">{{$speciality->study_form_label}}</span>
                             <span class="sp-metric__label">форма обучения</span>
                         </li>
                     </ul>
@@ -54,25 +57,16 @@
                     <h2 id="sp-about-title" class="sp-section__title">О программе</h2>
                 </div>
                 <div class="sp-about__body">
-                    <p class="sp-about__lead">
-                        Готовим квалифицированных специалистов в области разработки,
-                        внедрения и сопровождения информационных систем
-                        и программного обеспечения.
-                    </p>
-                    <p class="sp-about__text">
-                        Программа сочетает в себе теоретические знания и практические
-                        навыки в области математики, информатики и прикладного
-                        программирования. Студенты работают над реальными проектами
-                        и выпускаются с готовым портфолио.
-                    </p>
+                    <p class="sp-about__lead">{{$speciality->description_title}}</p>
+                    <p class="sp-about__text">{{$speciality->description}}</p>
 
+                    @if(!empty($speciality->stacks))
                     <ul class="sp-about__tags" role="list">
-                        <li>HTML &amp; CSS</li>
-                        <li>JavaScript</li>
-                        <li>PHP</li>
-                        <li>Современные фреймворки</li>
-                        <li>UI / UX</li>
+                        @foreach($speciality->stacks as $stack)
+                        <li>{{$stack['title']}}</li>
+                        @endforeach
                     </ul>
+                    @endif
                 </div>
             </div>
         </section>
@@ -85,36 +79,12 @@
                 </div>
 
                 <div class="sp-learn__grid">
-                    <article class="sp-learn__card" style="--i:0">
-                        <span class="sp-learn__num">01</span>
-                        <p>Проектировать архитектуру веб-сайтов и мультимедийных приложений, объединяя текстовые, графические и
-                            мультимедийные средства для корпоративных ресурсов и интернет-магазинов.</p>
+                    @foreach($speciality->skills ?? [] as $i => $skill)
+                    <article class="sp-learn__card" style="--i:{{$i}}">
+                        <span class="sp-learn__num">{{str_pad($i + 1, 2, '0', STR_PAD_LEFT)}}</span>
+                        <p>{{$skill['description']}}</p>
                     </article>
-                    <article class="sp-learn__card" style="--i:1">
-                        <span class="sp-learn__num">02</span>
-                        <p>Разрабатывать код на языках программирования (HTML, CSS, JavaScript, PHP) с использованием современных
-                            фреймворков и систем управления контентом (CMS).</p>
-                    </article>
-                    <article class="sp-learn__card" style="--i:2">
-                        <span class="sp-learn__num">03</span>
-                        <p>Выполнять адаптивную вёрстку и реализовывать кросс-браузерные интерфейсы для корректного отображения на
-                            мобильных, планшетных и компьютерных устройствах.</p>
-                    </article>
-                    <article class="sp-learn__card" style="--i:3">
-                        <span class="sp-learn__num">04</span>
-                        <p>Применять инструменты 3D-моделирования и современные технологии проектирования для создания
-                            высококачественных макетов сайтов.</p>
-                    </article>
-                    <article class="sp-learn__card" style="--i:4">
-                        <span class="sp-learn__num">05</span>
-                        <p>Разрабатывать пользовательские интерфейсы (FrontEnd) и серверную логику (BackEnd) для создания
-                            полноценных веб-приложений и корпоративных сайтов.</p>
-                    </article>
-                    <article class="sp-learn__card" style="--i:5">
-                        <span class="sp-learn__num">06</span>
-                        <p>Сочетать дизайнерские и технические навыки в процессе проектирования, разработки и сопровождения
-                            веб-сайтов и мультимедийных приложений.</p>
-                    </article>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -127,11 +97,9 @@
                 </div>
 
                 <ul class="sp-career__list" role="list">
-                    <li class="sp-career__chip">web-программист</li>
-                    <li class="sp-career__chip">HTML-верстальщик</li>
-                    <li class="sp-career__chip">разработчик мультимедийных приложений</li>
-                    <li class="sp-career__chip">консультант по информационным системам</li>
-                    <li class="sp-career__chip">тестировщик</li>
+                    @foreach($speciality->careers ?? [] as $career)
+                    <li class="sp-career__chip">{{$career['title']}}</li>
+                    @endforeach
                 </ul>
             </div>
         </section>
@@ -144,22 +112,9 @@
                 </div>
 
                 <ul class="sp-subjects__grid" role="list">
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">01</span><span>Проектирование и дизайн
-                информационных систем</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">02</span><span>Разработка кода информационных
-                систем</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">03</span><span>Тестирование информационных
-                систем</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">04</span><span>Проектирование и разработка
-                интерфейсов пользователя</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">05</span><span>Графический дизайн и
-                мультимедиа</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">06</span><span>Проектирование и разработка
-                веб-приложений</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">07</span><span>Оптимизация
-                веб-приложений</span></li>
-                    <li class="sp-subjects__card"><span class="sp-subjects__num">08</span><span>Обеспечение безопасности
-                веб-приложений</span></li>
+                    @foreach($speciality->core_subjects ?? [] as $i => $subject)
+                    <li class="sp-subjects__card"><span class="sp-subjects__num">{{str_pad($i + 1, 2, '0', STR_PAD_LEFT)}}</span><span>{{$subject['title']}}</span></li>
+                    @endforeach
                 </ul>
             </div>
         </section>
@@ -168,63 +123,85 @@
         <section class="sp-section sp-staff" aria-labelledby="sp-staff-title">
             <div class="container sp-section__inner">
 
+                @php
+                    $people = [];
+
+                    $cc = $speciality->cycleCommission;
+                    if ($cc && $cc->head) {
+                        $people[] = [
+                            'teacher' => $cc->head,
+                            'role'    => 'Председатель цикловой комиссии «' . $cc->title . '»',
+                            'badge'   => 'ЦК',
+                        ];
+                    }
+
+                    $dept = $speciality->department;
+                    if ($dept && $dept->head) {
+                        $people[] = [
+                            'teacher' => $dept->head,
+                            'role'    => 'Заведующая отделением «' . $dept->title . '»',
+                            'badge'   => $dept->head->cabinet ? 'каб. ' . $dept->head->cabinet : null,
+                        ];
+                    }
+
+                    if ($universalDepartment && $universalDepartment->head
+                        && (!$dept || $universalDepartment->id !== $dept->id)) {
+                        $people[] = [
+                            'teacher' => $universalDepartment->head,
+                            'role'    => 'Заведующая отделением «' . $universalDepartment->title . '»',
+                            'badge'   => $universalDepartment->head->cabinet ? 'каб. ' . $universalDepartment->head->cabinet : null,
+                        ];
+                    }
+                @endphp
+
                 <div class="sp-staff__grid">
+                    @foreach($people as $person)
+                    @php($teacher = $person['teacher'])
                     <article class="sp-person">
                         <div class="sp-person__photo-wrap">
-                            <img src="../../../assets/media/images/teachers/dinar.jpeg" alt="" class="sp-person__photo">
-                            <span class="sp-person__badge">ЦК</span>
+                            <img src="{{ $teacher->image ? asset('storage/' . $teacher->image) : asset('media/images/teachers/dinar.jpeg') }}" alt="" class="sp-person__photo">
+                            @if($person['badge'])
+                            <span class="sp-person__badge">{{$person['badge']}}</span>
+                            @endif
                         </div>
                         <div class="sp-person__body">
-                            <p class="sp-person__role">Председатель цикловой комиссии «Веб технологии»</p>
-                            <h3 class="sp-person__name">Хайруллин Динар Ильсурович</h3>
-                        </div>
-                    </article>
+                            <p class="sp-person__role">{{$person['role']}}</p>
+                            <h3 class="sp-person__name">{{$teacher->full_name}}</h3>
 
-                    <article class="sp-person">
-                        <div class="sp-person__photo-wrap">
-                            <img src="../../../assets/media/images/teachers/dinar.jpeg" alt="" class="sp-person__photo">
-                            <span class="sp-person__badge">каб. 422</span>
-                        </div>
-                        <div class="sp-person__body">
-                            <p class="sp-person__role">Заведующая отделением «Базовая профессиональная подготовка»</p>
-                            <h3 class="sp-person__name">Зарипова Лилия Шамилевна</h3>
-
+                            @if($teacher->phone || $teacher->email)
                             <div class="sp-person__links">
-                                <a class="sp-person__link" href="tel:+78432035555">
-                                    <img src="../../../assets/media/images/icons/phone.svg" alt="" width="18" height="18">
-                                    <span>8 (843) 203-55-55 <em>доб. 241</em></span>
+                                @if($teacher->phone)
+                                <a class="sp-person__link" href="tel:{{ preg_replace('/\D/', '', $teacher->phone) }}">
+                                    <img src="{{asset('media/images/icons/phone.svg')}}" alt="" width="18" height="18">
+                                    <span>{{ $teacher->formatted_phone }} @if($teacher->extension_phone)<em>доб. {{$teacher->extension_phone}}</em>@endif</span>
                                 </a>
-                                <a class="sp-person__link" href="mailto:Liliya.Shamilevna@tatar.ru">
-                                    <img src="../../../assets/media/images/icons/email.svg" alt="" width="18" height="18">
-                                    <span>Liliya.Shamilevna@tatar.ru</span>
+                                @endif
+                                @if($teacher->email)
+                                <a class="sp-person__link" href="mailto:{{$teacher->email}}">
+                                    <img src="{{asset('media/images/icons/email.svg')}}" alt="" width="18" height="18">
+                                    <span>{{$teacher->email}}</span>
                                 </a>
+                                @endif
                             </div>
+                            @endif
                         </div>
                     </article>
-
-                    <article class="sp-person">
-                        <div class="sp-person__photo-wrap">
-                            <img src="../../../assets/media/images/teachers/dinar.jpeg" alt="" class="sp-person__photo">
-                            <span class="sp-person__badge">каб. 1311</span>
-                        </div>
-                        <div class="sp-person__body">
-                            <p class="sp-person__role">Заведующая отделением «Информационные технологии»</p>
-                            <h3 class="sp-person__name">Зубкова Алина Сергеевна</h3>
-
-                            <div class="sp-person__links">
-                                <a class="sp-person__link" href="tel:+78432035555">
-                                    <img src="../../../assets/media/images/icons/phone.svg" alt="" width="18" height="18">
-                                    <span>8 (843) 203-55-55 <em>доб. 332</em></span>
-                                </a>
-                                <a class="sp-person__link" href="mailto:Alina.ZubkovaSer@tatar.ru">
-                                    <img src="../../../assets/media/images/icons/email.svg" alt="" width="18" height="18">
-                                    <span>Alina.ZubkovaSer@tatar.ru</span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
+                    @endforeach
                 </div>
             </div>
         </section>
+
+        @if($speciality->specialty_document)
+        <section class="sp-section sp-document">
+            <div class="container sp-section__inner">
+                <a href="{{asset('storage/' . $speciality->specialty_document)}}" class="sp-document__link"
+                   target="_blank" rel="noopener" download>
+                    <img src="{{asset('media/images/icons/документы.svg')}}" alt="" width="20" height="20">
+                    <span>Скачать документ специальности «{{$speciality->title}}»</span>
+                    <span class="sp-document__arrow" aria-hidden="true">↓</span>
+                </a>
+            </div>
+        </section>
+        @endif
     </main>
 @endsection

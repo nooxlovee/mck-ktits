@@ -2,36 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdmissionDocument;
+use App\Models\Commission;
+use App\Models\Department;
+use App\Models\Document;
+use App\Models\Faq;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function showMainPage() {
-
-        return view('pages.main');
+        $contacts = Commission::all();
+        $admissionDocuments = AdmissionDocument::all();
+        return view('pages.main', compact('admissionDocuments', 'contacts'));
     }
-
     public function showSpecialitiesPage() {
-        return view('pages.specialitites');
+        $specialities = Specialty::all();
+        return view('pages.specialitites', compact('specialities'));
     }
+    public function showSpecialityPage($id) {
+        $speciality = Specialty::with([
+            'cycleCommission.head',
+            'department.head',
+        ])->findOrFail($id);
 
-    public function showSpecialityPage() {
-        return view('pages.speciality');
+        $universalDepartment = Department::with('head')
+            ->where('is_universal', true)
+            ->first();
+
+        return view('pages.speciality', compact('speciality', 'universalDepartment'));
     }
-
     public function showDocumentsPage() {
-        return view('pages.documents');
+        $documents = Document::all();
+        return view('pages.documents', compact('documents'));
     }
-
     public function showFaqPage() {
-        return view('pages.faq');
+        $faqs = Faq::all();
+        return view('pages.faq', compact('faqs'));
     }
-
     public function showContactsPage() {
-        return view('pages.contacts');
+        $contacts = Commission::all();
+        return view('pages.contacts', compact('contacts'));
     }
-
     public function showNumbersPage() {
-        return view('pages.numbers');
+        $specialities = Specialty::where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
+
+        return view('pages.numbers', compact('specialities'));
     }
 }

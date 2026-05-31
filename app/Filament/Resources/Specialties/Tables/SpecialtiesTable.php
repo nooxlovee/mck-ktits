@@ -40,6 +40,16 @@ class SpecialtiesTable
                     ->limit(60)
                     ->tooltip(fn ($state) => $state),
 
+                TextColumn::make('qualification')
+                    ->label('Квалификация')
+                    ->searchable()
+                    ->sortable()
+                    ->wrap()
+                    ->limit(60)
+                    ->placeholder('—')
+                    ->tooltip(fn ($state) => $state)
+                    ->toggleable(),
+
                 TextColumn::make('cycleCommission.title')
                     ->label('Цикловая комиссия')
                     ->searchable()

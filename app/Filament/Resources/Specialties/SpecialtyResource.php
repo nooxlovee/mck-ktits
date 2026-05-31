@@ -17,24 +17,18 @@ use Filament\Tables\Table;
 class SpecialtyResource extends Resource
 {
     protected static ?string $model = Specialty::class;
-
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
     protected static ?string $navigationLabel = 'Специальности';
-
     protected static ?string $pluralModelLabel = 'Специальности';
-
     protected static ?string $recordTitleAttribute = 'title';
-
     public static function form(Schema $schema): Schema
     {
         return SpecialtyForm::configure($schema);
     }
-
     public static function table(Table $table): Table
     {
         return SpecialtiesTable::configure($table);
     }
-
     public static function getRelations(): array
     {
         return [

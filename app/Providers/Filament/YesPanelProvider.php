@@ -28,6 +28,8 @@ class YesPanelProvider extends PanelProvider
             ->id('yes')
             ->path('admin')
             ->login()
+            ->brandName('МЦК-КТИТС')
+            ->globalSearch(false)
             ->colors([
                 'primary' => Color::Blue,
             ])

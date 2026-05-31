@@ -10,6 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\RawJs;
 
 class SpecialtyForm
 {
@@ -27,7 +28,13 @@ class SpecialtyForm
                         ->required()
                         ->minLength(5)
                         ->maxLength(255)
+                        ->columnSpanFull(),
+
+                    TextInput::make('qualification')
+                        ->label('Квалификация')
                         ->unique(ignoreRecord: true)
+                        ->placeholder('Например: Специалист по компьютерным системам')
+                        ->maxLength(255)
                         ->columnSpanFull(),
 
                     TextInput::make('code')
@@ -53,7 +60,6 @@ class SpecialtyForm
                         ->nullable()
                         ->placeholder('Не привязано'),
                 ]),
-
             Section::make('Места и стоимость')
                 ->description('Количество мест и стоимость обучения')
                 ->columnSpanFull()
@@ -75,13 +81,14 @@ class SpecialtyForm
 
                     TextInput::make('price_per_year')
                         ->label('Стоимость за год обучения')
+                        ->mask(RawJs::make("\$money(\$input, '.', ' ', 0)"))
+                        ->stripCharacters(' ')
                         ->numeric()
                         ->minValue(0)
                         ->required()
-                        ->placeholder('88880')
+                        ->placeholder('88 880')
                         ->suffix('₽'),
                 ]),
-
             Section::make('Параметры обучения')
                 ->columnSpanFull()
                 ->columns(2)
@@ -101,7 +108,6 @@ class SpecialtyForm
                         ->default('full_time')
                         ->required(),
                 ]),
-
             Section::make('О программе')
                 ->description('Описание специальности для страницы')
                 ->columnSpanFull()
@@ -135,7 +141,6 @@ class SpecialtyForm
                         ->addActionLabel('Добавить технологию')
                         ->defaultItems(0),
                 ]),
-
             Section::make('Программа обучения')
                 ->description('Что студент изучит и кем сможет работать')
                 ->columnSpanFull()
@@ -190,7 +195,6 @@ class SpecialtyForm
                         ->addActionLabel('Добавить предмет')
                         ->defaultItems(0),
                 ]),
-
             Section::make('Иллюстрация')
                 ->description('Картинка для hero-блока на странице специальности')
                 ->columnSpanFull()
@@ -240,7 +244,6 @@ class SpecialtyForm
                             'required' => 'Выберите файл для загрузки.',
                         ]),
                 ]),
-
             Section::make('Управление')
                 ->description('Видимость на сайте и порядок отображения')
                 ->columnSpanFull()

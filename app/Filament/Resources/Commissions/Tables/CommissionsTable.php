@@ -40,6 +40,12 @@ class CommissionsTable
                     ->copyable()
                     ->copyMessage('Телефон скопирован'),
 
+                TextColumn::make('extension_phone')
+                    ->label('Добавочный номер')
+                    ->searchable()
+                    ->icon('heroicon-o-hashtag')
+                    ->placeholder('—'),
+
                 TextColumn::make('email')
                     ->label('Электронная почта')
                     ->searchable()

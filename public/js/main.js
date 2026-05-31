@@ -38,7 +38,6 @@ revealTargets.forEach((el, i) => {
     el.style.setProperty('--reveal-delay', `${(i % 6) * 90}ms`);
 });
 
-/* Шаги — используют собственную transition, подключаем напрямую */
 const flowItems = [...document.querySelectorAll('.admission-flow__item')];
 
 if ('IntersectionObserver' in window) {

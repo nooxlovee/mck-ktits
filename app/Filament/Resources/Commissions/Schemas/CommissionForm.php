@@ -3,7 +3,10 @@
 namespace App\Filament\Resources\Commissions\Schemas;
 
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class CommissionForm
@@ -35,6 +38,12 @@ class CommissionForm
                         }
                     },
                 ]),
+
+            TextInput::make('extension_phone')
+                ->label('Добавочный номер')
+                ->extraInputAttributes(['inputmode' => 'numeric'])
+                ->prefixIcon('heroicon-o-hashtag')
+                ->placeholder('Например: 123'),
 
             TextInput::make('email')
                 ->label('Электронная почта')
@@ -79,6 +88,43 @@ class CommissionForm
                 ->required()
                 ->minLength(3)
                 ->maxLength(255),
+
+            Repeater::make('schedule')
+                ->label('Режим работы')
+                ->schema([
+                    TextInput::make('days')
+                        ->label('Дни')
+                        ->placeholder('Например: Понедельник — четверг')
+                        ->required()
+                        ->maxLength(100),
+
+                    Toggle::make('is_off')
+                        ->label('Выходной')
+                        ->default(false)
+                        ->live(),
+
+                    TimePicker::make('time_from')
+                        ->label('Время с')
+                        ->seconds(false)
+                        ->displayFormat('H:i')
+                        ->native(false)
+                        ->required(fn (callable $get) => ! $get('is_off'))
+                        ->hidden(fn (callable $get) => (bool) $get('is_off')),
+
+                    TimePicker::make('time_to')
+                        ->label('Время по')
+                        ->seconds(false)
+                        ->displayFormat('H:i')
+                        ->native(false)
+                        ->required(fn (callable $get) => ! $get('is_off'))
+                        ->hidden(fn (callable $get) => (bool) $get('is_off')),
+                ])
+                ->columns(2)
+                ->reorderable()
+                ->collapsible()
+                ->itemLabel(fn (array $state): ?string => $state['days'] ?? null)
+                ->addActionLabel('Добавить строку расписания')
+                ->defaultItems(0),
         ]);
     }
 }
